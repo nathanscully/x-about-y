@@ -1,0 +1,22 @@
+---
+// Before: Calling Astro API route
+// const response = await fetch('/api/your-endpoint', {...});
+
+// After: Calling Cloudflare Function
+const response = await fetch('/api/generate-post', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    // Your request data
+    prompt: 'Generate something creative'
+  })
+});
+
+const result = await response.json();
+---
+
+<div>
+  {/* Your component JSX */}
+</div> 

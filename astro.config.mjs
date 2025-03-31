@@ -34,6 +34,11 @@ export default defineConfig({
         },
       },
     },
+    // Function configuration
+    functions: {
+      directory: './functions',
+      // You can specify additional function options here
+    },
   }),
   // Enable Tailwind CSS integration
   integrations: [

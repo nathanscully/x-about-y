@@ -6,7 +6,7 @@ import type { OpenAIResponse, Post, XValue, YValue } from '../types';
 import { generatePostKey } from './utils';
 
 // Constants
-const MODEL = 'gpt-4-turbo';
+const MODEL = 'gpt-4o-mini';
 const MAX_TOKENS = 400;
 const TEMPERATURE = 0.7;
 
@@ -28,7 +28,7 @@ Make it sound like someone trying too hard to appear insightful based on an unre
 Include excessive use of hashtags at the end.
 
 Keep it under 400 tokens and format it as a professional LinkedIn post.
-DO NOT include any kind of framing or quotes - write as if you are the person who had this experience directly.`;
+DO NOT include any kind of framing or quotes - write as if you are the person who had this experience directly. DO NOT include the title in the response post.`;
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
