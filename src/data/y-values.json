@@ -1,0 +1,92 @@
+[
+  {
+    "id": "b2b-sales",
+    "concept": "B2B sales",
+    "emoji": "💼",
+    "categories": ["sales", "business"]
+  },
+  {
+    "id": "product-market-fit",
+    "concept": "product-market fit",
+    "emoji": "🎯",
+    "categories": ["startup", "product"]
+  },
+  {
+    "id": "thought-leadership",
+    "concept": "thought leadership",
+    "emoji": "🧠",
+    "categories": ["marketing", "personal branding"]
+  },
+  {
+    "id": "stakeholder-management",
+    "concept": "stakeholder management",
+    "emoji": "🤝",
+    "categories": ["management", "leadership"]
+  },
+  {
+    "id": "digital-transformation",
+    "concept": "digital transformation",
+    "emoji": "💻",
+    "categories": ["technology", "strategy"]
+  },
+  {
+    "id": "venture-capital",
+    "concept": "raising venture capital",
+    "emoji": "💰",
+    "categories": ["finance", "startup"]
+  },
+  {
+    "id": "agile-methodology",
+    "concept": "agile methodology",
+    "emoji": "🔄",
+    "categories": ["project management", "development"]
+  },
+  {
+    "id": "customer-acquisition",
+    "concept": "customer acquisition",
+    "emoji": "🎣",
+    "categories": ["marketing", "growth"]
+  },
+  {
+    "id": "personal-branding",
+    "concept": "personal branding",
+    "emoji": "👤",
+    "categories": ["career", "marketing"]
+  },
+  {
+    "id": "blockchain-strategy",
+    "concept": "blockchain strategy",
+    "emoji": "⛓️",
+    "categories": ["technology", "innovation"]
+  },
+  {
+    "id": "remote-work-culture",
+    "concept": "remote work culture",
+    "emoji": "🏠",
+    "categories": ["human resources", "workplace"]
+  },
+  {
+    "id": "content-marketing",
+    "concept": "content marketing",
+    "emoji": "📝",
+    "categories": ["marketing", "communication"]
+  },
+  {
+    "id": "organizational-change",
+    "concept": "organizational change",
+    "emoji": "🔄",
+    "categories": ["management", "leadership"]
+  },
+  {
+    "id": "ux-design",
+    "concept": "UX design",
+    "emoji": "🎨",
+    "categories": ["design", "product"]
+  },
+  {
+    "id": "supply-chain-optimization",
+    "concept": "supply chain optimization",
+    "emoji": "🚚",
+    "categories": ["operations", "logistics"]
+  }
+]

@@ -1,0 +1,23 @@
+---
+// Common header component with navigation
+---
+
+<header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800">
+  <div class="container mx-auto py-4 px-4 flex flex-col sm:flex-row justify-between items-center">
+    <div class="flex items-center mb-4 sm:mb-0">
+      <a href="/" class="text-xl font-bold text-blue-600 flex items-center gap-2">
+        <span class="font-extrabold">X</span> 
+        <span class="text-gray-500 dark:text-gray-400">about</span> 
+        <span class="font-extrabold">Y</span>
+      </a>
+    </div>
+    
+    <nav>
+      <ul class="flex space-x-6">
+        <li><a href="/" class="hover:text-blue-600 transition-colors">Home</a></li>
+        <li><a href="/about" class="hover:text-blue-600 transition-colors">About</a></li>
+        <li><a href="/contribute" class="hover:text-blue-600 transition-colors">Contribute</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

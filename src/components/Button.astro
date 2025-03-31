@@ -1,0 +1,60 @@
+---
+export interface Props {
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  class?: string;
+  disabled?: boolean;
+}
+
+const {
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
+  href,
+  class: className,
+  disabled = false,
+  ...rest
+} = Astro.props;
+
+// Size-based classes
+const sizeClasses = {
+  sm: 'px-3 py-1.5 text-xs',
+  md: 'px-4 py-2 text-sm',
+  lg: 'px-5 py-2.5 text-base',
+};
+
+// Variant-based classes
+const variantClasses = {
+  primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-600',
+  secondary: 'bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-600',
+};
+
+// Base classes for all buttons
+const baseClasses = 'inline-flex items-center justify-center font-medium rounded-md shadow-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2';
+
+// Disabled classes
+const disabledClasses = 'opacity-50 cursor-not-allowed pointer-events-none';
+
+// Combine all classes based on props
+const buttonClasses = [
+  baseClasses,
+  sizeClasses[size],
+  variantClasses[variant],
+  disabled ? disabledClasses : '',
+  className
+].join(' ');
+---
+
+{
+  href ? (
+    <a href={href} class={buttonClasses} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={buttonClasses} disabled={disabled} {...rest}>
+      <slot />
+    </button>
+  )
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "sheep-shearing",
+    "activity": "shaving a sheep",
+    "emoji": "🐑",
+    "categories": ["animals", "farm"]
+  },
+  {
+    "id": "extreme-ironing",
+    "activity": "extreme ironing",
+    "emoji": "👕",
+    "categories": ["sports", "household"]
+  },
+  {
+    "id": "underwater-basket-weaving",
+    "activity": "underwater basket weaving",
+    "emoji": "🧺",
+    "categories": ["crafts", "water"]
+  },
+  {
+    "id": "competitive-eating",
+    "activity": "competitive hot dog eating",
+    "emoji": "🌭",
+    "categories": ["food", "competition"]
+  },
+  {
+    "id": "goat-yoga",
+    "activity": "goat yoga",
+    "emoji": "🐐",
+    "categories": ["animals", "wellness"]
+  },
+  {
+    "id": "lumberjack-competition",
+    "activity": "a lumberjack competition",
+    "emoji": "🪓",
+    "categories": ["outdoors", "competition"]
+  },
+  {
+    "id": "bird-watching",
+    "activity": "bird watching at 4AM",
+    "emoji": "🦉",
+    "categories": ["nature", "hobby"]
+  },
+  {
+    "id": "interpretive-dance",
+    "activity": "interpretive dance",
+    "emoji": "💃",
+    "categories": ["arts", "expression"]
+  },
+  {
+    "id": "snail-racing",
+    "activity": "competitive snail racing",
+    "emoji": "🐌",
+    "categories": ["animals", "competition"]
+  },
+  {
+    "id": "meditation-retreat",
+    "activity": "a silent meditation retreat",
+    "emoji": "🧘",
+    "categories": ["wellness", "mindfulness"]
+  },
+  {
+    "id": "clog-dancing",
+    "activity": "Dutch clog dancing",
+    "emoji": "👞",
+    "categories": ["dance", "culture"]
+  },
+  {
+    "id": "sourdough-baking",
+    "activity": "sourdough bread baking",
+    "emoji": "🍞",
+    "categories": ["food", "crafts"]
+  },
+  {
+    "id": "ghost-hunting",
+    "activity": "ghost hunting",
+    "emoji": "👻",
+    "categories": ["paranormal", "adventure"]
+  },
+  {
+    "id": "cheese-rolling",
+    "activity": "cheese rolling down a hill",
+    "emoji": "🧀",
+    "categories": ["tradition", "competition"]
+  },
+  {
+    "id": "origami-folding",
+    "activity": "origami crane folding",
+    "emoji": "🦢",
+    "categories": ["crafts", "precision"]
+  }
+]
