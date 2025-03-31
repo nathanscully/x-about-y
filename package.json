@@ -11,7 +11,7 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,ts,astro}\"",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "preview": "wrangler pages dev ./dist"
+    "preview": "astro build && wrangler pages dev ./dist"
 
   },
   "dependencies": {

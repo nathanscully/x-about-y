@@ -1,0 +1,137 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PostCard from '../../../components/PostCard.astro';
+import Button from '../../../components/Button.astro';
+import { getXValueById, getYValueById, generatePostKey } from '../../../lib/utils';
+import { generatePost } from '../../../lib/openai';
+
+// Get route parameters
+const { xId, yId } = Astro.params;
+
+// Get X and Y values
+const xValue = xId ? getXValueById(xId) : undefined;
+const yValue = yId ? getYValueById(yId) : undefined;
+
+// Handle invalid parameters
+if (!xValue || !yValue) {
+  return Astro.redirect('/404', 302);
+}
+
+// Get KV namespaces from runtime environment
+const { XABOUTY_POSTS, XABOUTY_GENERATION_COUNTER, OPENAI_API_KEY } = Astro.locals.runtime.env;
+
+// Get daily generation limit
+const dailyLimit = parseInt(Astro.locals.runtime.env.DAILY_GENERATION_LIMIT || '100', 10);
+
+// Create KV key for this post
+const postKey = generatePostKey(xValue.id, yValue.id);
+
+// Try to get post from KV store
+let postData;
+let isNewlyGenerated = false;
+
+try {
+  // Check if post exists in KV store
+  postData = await XABOUTY_POSTS.get(postKey, 'json');
+  
+  // If not found, generate a new post
+  if (!postData) {
+    // Generate the post using OpenAI
+    // const { post, isNewGeneration } = await generatePost(xValue, yValue, OPENAI_API_KEY);
+    const post = {
+      content: 'This is a sample post about what ' + xValue.activity + ' taught me about ' + yValue.concept + '.',
+    };
+    const isNewGeneration = true;
+    // Set post data
+    postData = {
+      content: post.content,
+      xValue: xValue.activity,
+      yValue: yValue.concept,
+      createdAt: new Date().toISOString()
+    };
+    
+    // Save to KV store
+    await XABOUTY_POSTS.put(postKey, JSON.stringify(postData));
+    
+    // Update generation counter
+    if (isNewGeneration) {
+      await XABOUTY_GENERATION_COUNTER.put(
+        `generation_count:${new Date().toISOString().split('T')[0]}`,
+        '1',
+        { expirationTtl: 86400 }
+      );
+    }
+    
+    isNewlyGenerated = true;
+  }
+} catch (error) {
+  console.error('Error getting/generating post:', error);
+  
+  // Fallback content if we can't generate
+  postData = {
+    content: `This is a sample post about what ${xValue.activity} taught me about ${yValue.concept}. The content couldn't be generated due to an error.`,
+    xValue: xValue.activity,
+    yValue: yValue.concept,
+    createdAt: new Date().toISOString()
+  };
+}
+
+// Page title and description
+const title = `What ${xValue.activity} taught me about ${yValue.concept} | X about Y`;
+const description = `A satirical LinkedIn post about what ${xValue.activity} taught me about ${yValue.concept}.`;
+---
+
+<Layout title={title} description={description}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-6">
+      <a href="/" class="text-blue-600 hover:underline inline-flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+        Back to home
+      </a>
+    </div>
+
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">What {xValue.activity} taught me about {yValue.concept}</h1>
+      <p class="text-gray-600">Generated {isNewlyGenerated ? 'just now' : 'previously'}</p>
+    </div>
+
+    <div class="mb-10">
+      <PostCard 
+        title={`What ${xValue.activity} taught me about ${yValue.concept}`}
+        content={postData.content}
+        xValue={xValue.activity}
+        yValue={yValue.concept}
+        isNewlyGenerated={isNewlyGenerated}
+        permalink={Astro.url.pathname}
+      />
+    </div>
+
+    <div class="flex flex-wrap gap-4 mb-10">
+      <Button href="/random">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+        </svg>
+        Generate Another Random Post
+      </Button>
+      
+      <Button href="/create" variant="secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        Create Your Own
+      </Button>
+    </div>
+    
+    <div class="border-t pt-8">
+      <h2 class="text-2xl font-bold mb-4">About this post</h2>
+      <p class="mb-4">This post combines the absurd activity of <strong>{xValue.activity}</strong> with the business concept of <strong>{yValue.concept}</strong> to create a satirical LinkedIn-style post.</p>
+      <p class="mb-4">All posts are generated using AI and are meant to be humorous parodies of the overly serious LinkedIn posts we've all seen.</p>
+      <p class="mb-2">Want to contribute more absurd activities or business concepts?</p>
+      <a href="https://github.com/yourusername/x-about-y" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+        Check out the project on GitHub
+      </a>
+    </div>
+  </div>
+</Layout> 

@@ -9,50 +9,50 @@
   - [x] Create necessary directories (components, layouts, pages, etc.)
   - [x] Set up basic components (Header, Footer, PostCard, etc.)
   - [x] Add sample data files
-- [ ] Configure Cloudflare Pages integration
-- [ ] Set up Cloudflare KV namespaces
-  - [ ] `POSTS_KV` for storing generated posts
-  - [ ] `GENERATION_COUNTER_KV` for tracking daily generation quota
-- [ ] Set up OpenAI API integration
-- [ ] Create GitHub repository for X/Y contributions
+- [x] Configure Cloudflare Pages integration
+- [x] Set up Cloudflare KV namespaces
+  - [x] `POSTS_KV` for storing generated posts
+  - [x] `GENERATION_COUNTER_KV` for tracking daily generation quota
+- [x] Set up OpenAI API integration
+- [x] Create GitHub repository for X/Y contributions
 
 ## Frontend Implementation
 
-- [ ] Create landing page with random post display
-- [ ] Design post card UI component
-  - [ ] Headline format: "What X taught me about Y"
-  - [ ] Two-paragraph post body
-  - [ ] Indication if AI-generated recently
-  - [ ] Copy button for easily copying post content
-- [ ] Implement "Generate another" button
-- [ ] Create X/Y selection UI (dropdowns or randomizer)
-- [ ] Add "Generate with this combo" button
-- [ ] Include PR submission CTA (link to GitHub)
-- [ ] Implement responsive design for mobile/desktop
-- [ ] Add social sharing functionality
-  - [ ] Add social media metadata for rich link previews
-  - [ ] Add "Copy Link" button for sharing specific posts
-  - [ ] Include "Share on LinkedIn" button for direct sharing
+- [x] Create landing page with random post display
+- [x] Design post card UI component
+  - [x] Headline format: "What X taught me about Y"
+  - [x] Two-paragraph post body
+  - [x] Indication if AI-generated recently
+  - [x] Copy button for easily copying post content
+- [x] Implement "Generate another" button
+- [x] Create X/Y selection UI (dropdowns or randomizer)
+- [x] Add "Generate with this combo" button
+- [x] Include PR submission CTA (link to GitHub)
+- [x] Implement responsive design for mobile/desktop
+- [x] Add social sharing functionality
+  - [x] Add social media metadata for rich link previews
+  - [x] Add "Copy Link" button for sharing specific posts
+  - [x] Include "Share on LinkedIn" button for direct sharing
 - [ ] Design and implement "Feeling Lucky" mode (optional)
 
 ## Backend Implementation
 
-- [ ] Set up Cloudflare Worker routes
-- [ ] Implement KV storage structure
-  - [ ] Key format: `post:x_slug:y_slug`
-  - [ ] Value format: `{ postText, createdAt }`
-- [ ] Create API endpoints:
-  - [ ] `GET /api/post?x=...&y=...` - Get/generate post for specific X/Y
-  - [ ] `GET /api/random` - Return random X/Y combo
-- [ ] Implement generation quota tracking
-  - [ ] Set daily limit (e.g., 100 generations)
-  - [ ] Auto-reset with 24h TTL
+- [x] Set up Cloudflare Worker routes
+- [x] Implement KV storage structure
+  - [x] Key format: `post:x_slug:y_slug`
+  - [x] Value format: `{ postText, createdAt }`
+- [x] Create API endpoints:
+  - [x] `GET /api/post?x=...&y=...` - Get/generate post for specific X/Y
+  - [x] `GET /api/random` - Return random X/Y combo
+- [x] Implement generation quota tracking
+  - [x] Set daily limit (e.g., 100 generations)
+  - [x] Auto-reset with 24h TTL
 - [ ] Implement IP-based rate limiting (optional)
-- [ ] Create OpenAI integration function
-  - [ ] Implement prompt formatting
-  - [ ] Handle API responses
-  - [ ] Implement error handling
-  - [ ] Set token limits for cost control
+- [x] Create OpenAI integration function
+  - [x] Implement prompt formatting
+  - [x] Handle API responses
+  - [x] Implement error handling
+  - [x] Set token limits for cost control
 
 ## Data Management
 
