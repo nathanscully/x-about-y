@@ -21,10 +21,14 @@
   },
   {
     "id": "competitive-eating",
-    "activity": "competitive hot dog eating",
+    "activity": "competitive eating",
     "emoji": "🌭"
   },
   {
+    "id": "competitive-hot-dog-eating",
+    "activity": "competitive hot dog eating",
+    "emoji": "🌭"
+  },{
     "id": "goat-yoga",
     "activity": "goat yoga",
     "emoji": "🐐"

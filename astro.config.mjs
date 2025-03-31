@@ -17,6 +17,8 @@ export default defineConfig({
     // Enable platform proxy for local development with KV
     platformProxy: {
       enabled: true,
+      configPath: './wrangler.toml',
+      persist: true
     },
     imageService: 'cloudflare',
     // Runtime configuration for local development
@@ -34,11 +36,6 @@ export default defineConfig({
           type: 'secret',
         },
       },
-    },
-    // Function configuration
-    functions: {
-      directory: './functions',
-      // You can specify additional function options here
     },
   }),
   // Enable Tailwind CSS integration
