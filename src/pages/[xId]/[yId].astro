@@ -1,0 +1,92 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Post from '@/components/Post.astro';
+import { getXValueById, getYValueById, generatePostKey } from '@/lib/utils';
+import { generatePost } from '@/lib/openai';
+
+// Get route parameters
+const { xId, yId } = Astro.params;
+
+// Get X and Y values
+const xValue = xId ? getXValueById(xId) : null;
+const yValue = yId ? getYValueById(yId) : null;
+
+// Handle invalid parameters
+if (!xValue || !yValue) {
+  return Astro.redirect('/404', 302);
+}
+
+// Get KV namespaces from runtime environment
+const { XABOUTY_POSTS, OPENAI_API_KEY } = Astro.locals.runtime.env;
+// Create KV key for this post
+const postKey = generatePostKey(xId!, yId!);
+
+// Try to get post from KV store
+let postData;
+let isNewlyGenerated = false;
+
+try {
+  // Check if post exists in KV store
+  postData = await XABOUTY_POSTS.get(postKey, 'json');
+  
+  // If not found, generate a new post
+  if (!postData) {
+    const { post } = await generatePost(xValue, yValue, OPENAI_API_KEY);
+  
+    // Set post data
+    postData = {
+      content: post.content,
+      xValue: xValue.activity,
+      yValue: yValue.concept,
+      createdAt: new Date().toISOString()
+    };
+    
+    // Save to KV store
+    await XABOUTY_POSTS.put(postKey, JSON.stringify(postData));
+    
+    isNewlyGenerated = true;
+  }
+} catch (error) {
+  return Astro.redirect('/500', 302); 
+}
+
+// Page title and description
+const title = `What ${xValue.activity} ${xValue.emoji} taught me about ${yValue.concept} ${yValue.emoji} | X about Y`;
+const description = `A satirical LinkedIn post about what ${xValue.activity} ${xValue.emoji} taught me about ${yValue.concept} ${yValue.emoji}.`;
+---
+
+<Layout title={title} description={description}>  
+  <main class="flex flex-col min-h-screen px-24 py-2 space-y-24">
+    <!-- Hero with Post -->
+    <section class="flex flex-col md:flex-row flex-1 gap-8 md:gap-16">
+      <div class="w-full md:w-1/2">
+        <h1 class="text-6xl md:text-7xl font-bold leading-tight space-y-4">
+          <div>What <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">{xValue.activity} {xValue.emoji}</span> </div>
+          <div>taught me</div>
+          <div>about <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">{yValue.concept} {yValue.emoji}</span></div>
+        </h1>
+      </div>
+      <!-- Post Content -->
+      <div class="w-full md:w-1/2">
+        <Post 
+          xActivity={xValue.activity} 
+          yConcept={yValue.concept}
+          content={postData.content}
+          xEmoji={xValue.emoji}
+          yEmoji={yValue.emoji}
+        />
+      </div>
+    </section>
+  </main>
+
+  <style>
+    @keyframes blurPulse {
+      0%, 100% { filter: blur(4px); }
+      50% { filter: blur(8px); }
+    }
+
+    .animate-blurPulse {
+      animation: blurPulse 5s ease-in-out infinite;
+    }
+  </style>
+</Layout> 

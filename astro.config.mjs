@@ -18,6 +18,7 @@ export default defineConfig({
     platformProxy: {
       enabled: true,
     },
+    imageService: 'cloudflare',
     // Runtime configuration for local development
     runtime: {
       bindings: {

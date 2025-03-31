@@ -9,7 +9,6 @@ export interface XValue {
   id: string;
   activity: string;
   emoji: string;
-  categories: string[];
 }
 
 /**
@@ -19,7 +18,6 @@ export interface YValue {
   id: string;
   concept: string;
   emoji: string;
-  categories: string[];
 }
 
 /**
@@ -32,7 +30,6 @@ export interface Post {
   xId: string;
   yId: string;
   createdAt: number;
-  isGenerated: boolean;
 }
 
 /**

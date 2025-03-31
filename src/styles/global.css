@@ -3,18 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom base styles */
+/* Base styles */
 @layer base {
   html {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply antialiased;
-    line-height: 1.5;
-    color: #000;
-    background-color: #fff;
+    @apply antialiased h-full bg-white text-gray-900;
   }
 
   h1, h2, h3, h4 {
@@ -47,21 +44,19 @@
 /* Custom component classes */
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent 
-      text-sm font-medium rounded-md shadow-sm transition
-      focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition;
   }
 
   .btn-primary {
-    @apply btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-600;
+    @apply bg-indigo-600 text-white hover:bg-indigo-700;
   }
 
   .btn-secondary {
-    @apply btn bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-600;
+    @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
   }
 
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden;
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition p-6;
   }
 
   .linkedin-card {
@@ -81,18 +76,49 @@
   }
   
   .prose p {
-    @apply text-lg leading-relaxed mb-6;
-    max-width: 75ch;
+    @apply text-base leading-relaxed mb-6;
+    max-width: 80ch;
   }
   
   .prose strong {
     @apply font-bold;
   }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-r from-indigo-600 to-purple-600;
+  }
+
+  .gradient-bg-light {
+    @apply bg-gradient-to-br from-indigo-50 to-purple-50;
+  }
 }
 
-/* Custom utility classes */
+/* Custom animations */
+@keyframes blurPulse {
+  0%, 100% { filter: blur(4px); }
+  50% { filter: blur(8px); }
+}
+
+.animate-blurPulse {
+  animation: blurPulse 5s ease-in-out infinite;
+}
+
+/* Utility classes */
+.line-clamp-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* Focus styles */
 @layer utilities {
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
   }
 }

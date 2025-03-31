@@ -1,31 +1,95 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Post from '../components/Post.astro';
-import { getRandomXValue, getRandomYValue } from '../lib/utils';
+const examples = [
+  ["A sunrise sauna", "B2B sales"],
+  ["Competitive hot dog eating", "UX design"],
+  ["Tetris", "team dynamics"],
+  ["Bungee jumping", "agile workflows"],
+  ["My sourdough starter", "customer retention"],
+  ["Escape rooms", "product-market fit"],
+  ["DJing weddings", "cross-functional collaboration"],
+  ["Camping with toddlers", "incident response"],
+  ["Laser tag", "stakeholder management"]
+];
 
-// Get random values for sample display
-const randomX = getRandomXValue();
-const randomY = getRandomYValue();
-
-// Sample post content (would normally come from the API or KV store)
-const samplePostContent = `Last week, I found myself ${randomX.activity}, and it hit me like a thunderbolt – this experience was a perfect metaphor for ${randomY.concept}! Just as I navigated the unpredictable terrain of this challenge, successful businesses must adapt to the ever-changing landscape of modern markets. The resilience required to stay focused amidst uncertainty directly translates to how we must pivot our strategic frameworks to maintain competitive advantage in today's dynamic ecosystem.
-
-What truly separated the amateurs from the professionals was how they approached the fundamentals with methodical precision. As someone who has led multiple cross-functional teams through six different digital transformation initiatives (humble brag!), I immediately recognized that the same principles applied. The key performance indicators that signaled success were identical – commitment to excellence, data-driven decision making, and an unwavering belief in the process despite short-term setbacks.
-
-#MindsetMatters #BusinessLessonsEverywhere #ThoughtLeadership #ProfessionalDevelopment #DisruptiveInnovation #${randomX.activity.replace(/\s+/g, '')} #${randomY.concept.replace(/\s+/g, '')} #AlwaysLearning`;
-
-const title = "X about Y";
-const description = "Generate hilarious parody LinkedIn posts with absurd combinations of activities and business concepts.";
+const testimonials = [
+  {
+    name: "Chaz Flamborough",
+    title: "Global Synergy Czar of UX Evangelism, ApexConvergence Ltd.",
+    quote: "I used to think hot dogs were just for eating—turns out, they were the mentors I never had.",
+    image: "/testimonials/chaz.png"
+  },
+  {
+    name: "Kendra Voss",
+    title: "Senior Executive VP of Visionary Thought Leadership, TEDx Mullumbimby",
+    quote: "I quoted a post from here in my keynote: 'Scaling Trust Through Snack-Based Frameworks'. Standing ovation: 46 seconds.",
+    image: "/testimonials/kendra.png"
+  },
+  {
+    name: "Trent Blazewell",
+    title: "Influencer Coach & Chief Monetization Architect, HustleNest.io",
+    quote: "Now I'm the guy who links extreme ironing to stakeholder empathy. Engagement's up 9,000%.",
+    image: "/testimonials/trent.png"
+  },
+  {
+    name: "Simone Flux",
+    title: "VP of Immersive Hydrodynamic Strategy, Splashlytics",
+    quote: "People are only just clocking on to face-submersion. I do it daily—while optimizing retention.",
+    image: "/testimonials/simone.png"
+  }
+];
+import Layout from '@layouts/Layout.astro';
 ---
+<Layout title={"What X taught me about Y"} description={"The most helpful LinkedIn post generator on the internet"}>
 
-<Layout title={title} description={description}>  
-  <main class="container mx-auto px-6 pt-8 pb-20">
-    <Post 
-      xActivity={randomX.activity}
-      yConcept={randomY.concept}
-      content={samplePostContent}
-      xEmoji={randomX.emoji}
-      yEmoji={randomY.emoji}
-    />
-  </main>
+    <main class="flex flex-col min-h-screen px-24 py-2 space-y-24">
+      <!-- Hero -->
+      <section class="flex flex-col md:flex-row flex-1 items-center justify-between gap-8 md:gap-16">
+        <div class="w-full md:w-1/2">
+          <h1 class="text-6xl md:text-7xl font-bold leading-tight space-y-4">
+            <div>What <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400 blur-sm animate-blurPulse">X</span></div>
+            <div>taught me</div>
+            <div>about <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 blur-sm animate-blurPulse">Y</span></div>
+          </h1>
+        </div>
+        <!-- Pills -->
+        <div class="w-full md:w-1/2 grid grid-cols-2 gap-4 gap-x-8">
+          {examples.map(([x, y]) => (
+            <a href={`/${x.toLowerCase().replace(/\s+/g, '-')}/${y.toLowerCase().replace(/\s+/g, '-')}`} 
+               class="px-0 py-3 md:py-2 text-sm font-medium hover:opacity-80 transition-opacity">
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">{x}</span>
+              <span class="text-gray-600"> → </span>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">{y}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="max-w-6xl mx-auto text-center space-y-12">
+        <h2 class="text-3xl font-bold">Endorsements from Visionaries</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+          {testimonials.map(({ name, title, quote, image }) => (
+            <div class="bg-gray-50 p-6 rounded-2xl shadow hover:shadow-md transition flex flex-col gap-4">
+              <img src={image} alt={name} class="w-16 h-16 rounded-full object-cover" />
+              <p class="text-sm italic">"{quote}"</p>
+              <div class="mt-auto">
+                <p class="font-semibold">{name}</p>
+                <p class="text-xs text-gray-500">{title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <style>
+      @keyframes blurPulse {
+        0%, 100% { filter: blur(4px); }
+        50% { filter: blur(8px); }
+      }
+
+      .animate-blurPulse {
+        animation: blurPulse 5s ease-in-out infinite;
+      }
+    </style>
 </Layout>

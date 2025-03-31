@@ -12,35 +12,17 @@ const { xActivity, yConcept, content, xEmoji = "", yEmoji = "" } = Astro.props;
 // Helper function to ensure emoji is rendered properly
 const processEmoji = (emoji: string) => {
   if (!emoji) return "";
-  
-  // Handle common emoji issues
   try {
-    // Try to decode URI encoded emojis
     const decoded = decodeURIComponent(emoji);
-    
-    // Handle escaped Unicode sequences like \u1F600
-    if (decoded.includes('\\u')) {
-      return JSON.parse(`"${decoded}"`);
-    }
-    
-    // For emoji shortcodes (if applicable)
-    if (decoded.startsWith(':') && decoded.endsWith(':')) {
-      // This would be where you'd have a shortcode-to-emoji mapping
-      // For now, just returning as is
-      return decoded;
-    }
-    
-    return decoded;
+    return decoded.includes('\\u') ? JSON.parse(`"${decoded}"`) : decoded;
   } catch (e) {
     console.error("Error processing emoji:", e);
-    // Fallback to a default emoji if there's an error
     return "🔥";
   }
 };
 
-// Process the emojis
 const safeXEmoji = processEmoji(xEmoji);
-const safeYEmoji = processEmoji(yEmoji)
+const safeYEmoji = processEmoji(yEmoji);
 
 // Create the LinkedIn share URL
 const postTitle = `What ${xActivity} ${safeXEmoji} taught me about ${yConcept} ${safeYEmoji}`;
@@ -48,40 +30,40 @@ const fullPostContent = `${postTitle}\n\n${content}\n\n\n${Astro.url.href}`;
 const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(fullPostContent)}`;
 ---
 
-<div>
-  <h2 class="text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight font-normal mt-2">
-    What {xActivity} <span class="emoji">{safeXEmoji}</span> taught me about {yConcept} <span class="emoji">{safeYEmoji}</span>
-  </h2>
-  
-  <div class="prose max-w-none mb-10">
-    {content.split('\n\n').map((paragraph: string) => (
-      <p class="mb-4 text-base">
-        {paragraph}
-        {paragraph.length > 0 && Math.random() > 0.7 ? 
-          <span class="emoji"> {[safeXEmoji, safeYEmoji, "🔥", "💯", "🚀", "💪", "🙌", "👍"][Math.floor(Math.random() * 8)]}</span> : ""}
-      </p>
-    ))}
-  </div>
-  
-  <div class="flex flex-wrap gap-4">
-    <a 
-      href="/random" 
-      class="inline-block bg-black text-white px-6 py-3 text-base tracking-wide hover:bg-gray-800 transition-colors"
-    >
-      Another learning <span class="emoji">🧠</span>
-    </a>
-    
-    <a 
-      href={linkedInShareUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-block bg-[#0077b5] text-white px-6 py-3 text-base tracking-wide hover:bg-[#005e8c] transition-colors"
-    >
-      Share on LinkedIn <span class="emoji">📢</span>
-    </a>
+<div class="card">
+  <div class="flex flex-col gap-4">
+    <div class="prose">
+      {content.split('\n\n').map((paragraph: string) => (
+        <p class="text-gray-600">
+          {paragraph}
+          {paragraph.length > 0 && Math.random() > 0.8 ? 
+            <span class="inline-block ml-1">{[safeXEmoji, safeYEmoji, "🔥", "💡", "🚀", "💪"][Math.floor(Math.random() * 6)]}</span> : ""}
+        </p>
+      ))}
+    </div>
+
+    <div class="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
+      <a 
+        href="/random" 
+        class="btn btn-primary"
+      >
+        Generate Another
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+        </svg>
+      </a>
+      
+      <a 
+        href={linkedInShareUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-secondary"
+      >
+        Share on LinkedIn
+        <svg class="h-5 w-5 ml-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </div>
-
-<style>
-  /* No need for additional styles as we're using the global .emoji class from the Layout */
-</style> 

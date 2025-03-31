@@ -88,5 +88,142 @@
     "concept": "supply chain optimization",
     "emoji": "🚚",
     "categories": ["operations", "logistics"]
-  }
+  },
+  {
+    "id": "b2b2c-sales",
+    "concept": "B2B2C sales",
+    "emoji": "💼",
+    "categories": ["sales", "business"]
+  },
+{
+  "id": "synergy",
+  "concept": "synergy",
+  "emoji": "\ud83d\udc65"
+},
+{
+  "id": "go-to-market-strategy",
+  "concept": "go-to-market strategy",
+  "emoji": "\ud83d\udd8c\ufe0f"
+},
+{
+  "id": "employee-engagement",
+  "concept": "employee engagement",
+  "emoji": "\ud83d\udda5\ufe0f"
+},
+{
+  "id": "kpi-alignment",
+  "concept": "KPI alignment",
+  "emoji": "\ud83d\udd27"
+},
+{
+  "id": "brand-storytelling",
+  "concept": "brand storytelling",
+  "emoji": "\ud83d\udcd8"
+},
+{
+  "id": "product-evangelism",
+  "concept": "product evangelism",
+  "emoji": "\ud83d\udcc9"
+},
+{
+  "id": "value-prop-creation",
+  "concept": "value prop creation",
+  "emoji": "\ud83d\udc65"
+},
+{
+  "id": "strategic-hiring",
+  "concept": "strategic hiring",
+  "emoji": "\ud83d\udcd8"
+},
+{
+  "id": "ai-enablement",
+  "concept": "AI enablement",
+  "emoji": "\ud83d\udca1"
+},
+{
+  "id": "emotional-intelligence",
+  "concept": "emotional intelligence",
+  "emoji": "\ud83d\ude4b"
+},
+{
+  "id": "team-velocity",
+  "concept": "team velocity",
+  "emoji": "\ud83d\udcd8"
+},
+{
+  "id": "growth-mindset",
+  "concept": "growth mindset",
+  "emoji": "\ud83d\ude4b"
+},
+{
+  "id": "innovation-at-scale",
+  "concept": "innovation at scale",
+  "emoji": "\ud83d\udd8c\ufe0f"
+},
+{
+  "id": "cross-silo-collaboration",
+  "concept": "cross-silo collaboration",
+  "emoji": "\ud83d\udcc9"
+},
+{
+  "id": "retention-strategy",
+  "concept": "retention strategy",
+  "emoji": "\ud83d\udce6"
+},
+{
+  "id": "compliance-optimization",
+  "concept": "compliance optimization",
+  "emoji": "\ud83d\uddc2\ufe0f"
+},
+{
+  "id": "freemium-conversion",
+  "concept": "freemium conversion",
+  "emoji": "\ud83d\ude80"
+},
+{
+  "id": "mobile-first-design",
+  "concept": "mobile-first design",
+  "emoji": "\ud83d\udcc9"
+},
+{
+  "id": "talent-mapping",
+  "concept": "talent mapping",
+  "emoji": "\ud83d\udda5\ufe0f"
+},
+{
+  "id": "enterprise-agility",
+  "concept": "enterprise agility",
+  "emoji": "\ud83d\ude4b"
+},
+{
+  "id": "incident-response",
+  "concept": "incident response",
+  "emoji": "\ud83d\udde8\ufe0f"
+},
+{
+  "id": "agile-workflows",
+  "concept": "agile workflows",
+  "emoji": "\ud83d\udcbc"
+},
+{
+  "id": "customer-retention",
+  "concept": "customer retention",
+  "emoji": "\ud83d\udce3"
+},
+{
+  "id": "cross-functional-collaboration",
+  "concept": "cross-functional collaboration",
+  "emoji": "\ud83d\udcc9"
+},
+
+{
+  "id": "b2b2b2b2c2c-sales",
+  "concept": "B2B2B2B2C2C sales",
+  "emoji": "\ud83d\ude4b"
+},
+{
+  "id": "career-growth-trajectory",
+  "concept": "career growth trajectory",
+  "emoji": "\ud83c\udfe2"
+}
 ]

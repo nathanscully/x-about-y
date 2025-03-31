@@ -4,5 +4,5 @@ import { getRandomXValue, getRandomYValue } from '../lib/utils';
 const randomX = getRandomXValue();
 const randomY = getRandomYValue();
 // Redirect to the post page with random X and Y values
-return Astro.redirect(`/post/${randomX.id}/${randomY.id}`); 
+return Astro.redirect(`/${randomX.id}/${randomY.id}`); 
 ---

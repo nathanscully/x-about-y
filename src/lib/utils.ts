@@ -27,7 +27,6 @@ export function getXValueById(id: string): XValue | undefined {
   const xValue = xValues.find((x) => x.id === id);
   if (xValue) {
     // Ensure emoji is properly handled
-    console.log("Raw X emoji:", xValue.emoji);
     xValue.emoji = xValue.emoji || ""; // Ensure it's not undefined
   }
   return xValue;
@@ -40,7 +39,6 @@ export function getYValueById(id: string): YValue | undefined {
   const yValue = yValues.find((y) => y.id === id);
   if (yValue) {
     // Ensure emoji is properly handled
-    console.log("Raw Y emoji:", yValue.emoji);
     yValue.emoji = yValue.emoji || ""; // Ensure it's not undefined
   }
   return yValue;
@@ -98,7 +96,7 @@ export function formatDate(date: Date): string {
  * Generate permalink for a post
  */
 export function generatePermalink(xId: string, yId: string): string {
-  return `/post/${xId}/${yId}`;
+  return `/${xId}/${yId}`;
 }
 
 /**

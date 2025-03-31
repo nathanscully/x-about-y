@@ -2,91 +2,276 @@
   {
     "id": "sheep-shearing",
     "activity": "shaving a sheep",
-    "emoji": "🐑",
-    "categories": ["animals", "farm"]
+    "emoji": "🐑"
+  },
+  {
+    "id": "a-sunrise-sauna",
+    "activity": "a sunrise sauna",
+    "emoji": "🔥"
   },
   {
     "id": "extreme-ironing",
     "activity": "extreme ironing",
-    "emoji": "👕",
-    "categories": ["sports", "household"]
+    "emoji": "👕"
   },
   {
     "id": "underwater-basket-weaving",
     "activity": "underwater basket weaving",
-    "emoji": "🧺",
-    "categories": ["crafts", "water"]
+    "emoji": "🧺"
   },
   {
     "id": "competitive-eating",
     "activity": "competitive hot dog eating",
-    "emoji": "🌭",
-    "categories": ["food", "competition"]
+    "emoji": "🌭"
   },
   {
     "id": "goat-yoga",
     "activity": "goat yoga",
-    "emoji": "🐐",
-    "categories": ["animals", "wellness"]
+    "emoji": "🐐"
   },
   {
     "id": "lumberjack-competition",
     "activity": "a lumberjack competition",
-    "emoji": "🪓",
-    "categories": ["outdoors", "competition"]
+    "emoji": "🪓"
   },
   {
     "id": "bird-watching",
     "activity": "bird watching at 4AM",
-    "emoji": "🦉",
-    "categories": ["nature", "hobby"]
+    "emoji": "🦉"
   },
   {
     "id": "interpretive-dance",
     "activity": "interpretive dance",
-    "emoji": "💃",
-    "categories": ["arts", "expression"]
+    "emoji": "💃"
   },
   {
     "id": "snail-racing",
     "activity": "competitive snail racing",
-    "emoji": "🐌",
-    "categories": ["animals", "competition"]
+    "emoji": "🐌"
   },
   {
     "id": "meditation-retreat",
     "activity": "a silent meditation retreat",
-    "emoji": "🧘",
-    "categories": ["wellness", "mindfulness"]
+    "emoji": "🧘"
   },
   {
     "id": "clog-dancing",
     "activity": "Dutch clog dancing",
-    "emoji": "👞",
-    "categories": ["dance", "culture"]
+    "emoji": "👞"
   },
   {
     "id": "sourdough-baking",
     "activity": "sourdough bread baking",
-    "emoji": "🍞",
-    "categories": ["food", "crafts"]
+    "emoji": "🍞"
   },
   {
     "id": "ghost-hunting",
     "activity": "ghost hunting",
-    "emoji": "👻",
-    "categories": ["paranormal", "adventure"]
+    "emoji": "👻"
   },
   {
     "id": "cheese-rolling",
     "activity": "cheese rolling down a hill",
-    "emoji": "🧀",
-    "categories": ["tradition", "competition"]
+    "emoji": "🧀"
   },
   {
     "id": "origami-folding",
     "activity": "origami crane folding",
-    "emoji": "🦢",
-    "categories": ["crafts", "precision"]
+    "emoji": "🦢"
+  },
+  {
+    "id": "beetle-racing",
+    "activity": "beetle racing",
+    "emoji": "🐞"
+  },
+  {
+    "id": "marathon-karaoke",
+    "activity": "marathon karaoke",
+    "emoji": "🎤"
+  },
+  {
+    "id": "speed-snow-shoveling",
+    "activity": "speed snow shoveling",
+    "emoji": "🏃"
+  },
+  {
+    "id": "extreme-sudoku",
+    "activity": "extreme Sudoku",
+    "emoji": "🔢"
+  },
+  {
+    "id": "ferret-herding",
+    "activity": "ferret herding",
+    "emoji": "🐶"
+  },
+  {
+    "id": "wallpaper-design",
+    "activity": "wallpaper design",
+    "emoji": "🎨"
+  },
+  {
+    "id": "yarn-bombing",
+    "activity": "yarn bombing",
+    "emoji": "🧶"
+  },
+  {
+    "id": "opera-yodeling",
+    "activity": "opera yodeling",
+    "emoji": "🎤"
+  },
+  {
+    "id": "furniture-assembly",
+    "activity": "furniture assembly",
+    "emoji": "🪑"
+  },
+  {
+    "id": "lava-rock-balancing",
+    "activity": "lava rock balancing",
+    "emoji": "🪨"
+  },
+  {
+    "id": "giant-jenga",
+    "activity": "giant Jenga",
+    "emoji": "🪑"
+  },
+  {
+    "id": "haiku-slamming",
+    "activity": "haiku slamming",
+    "emoji": "🪑"
+  },
+  {
+    "id": "extreme-bird-calling",
+    "activity": "extreme bird calling",
+    "emoji": "🦅"
+  },
+  {
+    "id": "garden-gnome-painting",
+    "activity": "garden gnome painting",
+    "emoji": "🪑"
+  },
+  {
+    "id": "moonwalking-contests",
+    "activity": "moonwalking contests",
+    "emoji": "🌙"
+  },
+  {
+    "id": "hot-sauce-tasting",
+    "activity": "hot sauce tasting",
+    "emoji": "🌶️"
+  },
+  {
+    "id": "extreme-limbo",
+    "activity": "extreme limbo",
+    "emoji": "🪑"
+  },
+  {
+    "id": "jigsaw-puzzle-marathons",
+    "activity": "jigsaw puzzle marathons",
+    "emoji": "🪑"
+  },
+  {
+    "id": "banjo-speedruns",
+    "activity": "banjo speedruns",
+    "emoji": "🪑"
+  },
+  {
+    "id": "leaf-raking-symphonies",
+    "activity": "leaf raking symphonies",
+    "emoji": "\ud83d\udca7"
+  },
+  {
+    "id": "competitive-snail-racing",
+    "activity": "competitive snail racing",
+    "emoji": "🐌"
+  },
+  {
+    "id": "a-silent-meditation-retreat",
+    "activity": "a silent meditation retreat",
+    "emoji": "🧘"
+  },
+  {
+    "id": "human-powered-ice-cream-making",
+    "activity": "human-powered ice cream making",
+    "emoji": "🐶"
+  },
+  {
+    "id": "speed-writing",
+    "activity": " speed writing",
+    "emoji": "🔢"
+  },
+  {
+    "id": "speed-reading",
+    "activity": "speed reading",
+    "emoji": "🔢"
+  },
+  {
+    "id": "speed-knitting",
+    "activity": "speed knitting",
+    "emoji": "🧶"
+  },
+  {
+    "id": "speed-painting",
+    "activity": "speed painting",
+    "emoji": "🎨"
+  },
+  {
+    "id": "speed-drawing",
+    "activity": "speed drawing",
+    "emoji": "🔢"
+  },
+  {
+    "id": "speed-writing",
+    "activity": "speed writing",
+    "emoji": "🔢"
+  },
+  {
+    "id": "competitive-hot-dog-eating",
+    "activity": "competitive hot dog eating",
+    "emoji": "🌭"
+  },
+  {
+    "id": "tetris",
+    "activity": "tetris",
+    "emoji": "\ud83c\udfad"
+  },
+  {
+    "id": "bungee-jumping",
+    "activity": "bungee jumping",
+    "emoji": "\ud83e\uddf9"
+  },
+  {
+    "id": "my-sourdough-starter",
+    "activity": "my sourdough starter",
+    "emoji": "🍞"
+  },
+  {
+    "id": "escape-rooms",
+    "activity": "escape rooms",
+    "emoji": "🪑"
+  },
+  {
+    "id": "djing-weddings",
+    "activity": "DJing weddings",
+    "emoji": "\ud83d\ude9c"
+  },
+  {
+    "id": "camping-with-toddlers",
+    "activity": "camping with toddlers",
+    "emoji": "\ud83e\uddf6"
+  },
+  {
+    "id": "laser-tag",
+    "activity": "laser tag",
+    "emoji": "\ud83d\udd7a"
+  },
+  {
+    "id": "cheese-rolling-down-a-hill",
+    "activity": "cheese rolling down a hill",
+    "emoji": "🧀"
+  },
+  {
+    "id": "speed-golfing",
+    "activity": "speed golfing",
+    "emoji": "\ud83e\uddd7"
   }
 ]

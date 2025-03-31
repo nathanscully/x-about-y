@@ -13,8 +13,8 @@ export interface Props {
 }
 
 const {
-  title,
-  description,
+  title = "What X taught me about Y",
+  description = "Discover unexpected connections between everyday activities and business concepts",
   image = '/social-image.jpg',
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
@@ -24,11 +24,11 @@ const resolvedCanonicalURL = canonicalURL instanceof URL
   ? canonicalURL 
   : new URL(canonicalURL, Astro.site);
 ---
+
 <!DOCTYPE html>
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Add emoji font support -->
@@ -64,16 +64,10 @@ const resolvedCanonicalURL = canonicalURL instanceof URL
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site)} />
-    
-    <!-- Additional head elements -->
-    <slot name="head" />
   </head>
-  <body class="min-h-screen bg-white text-black font-sans">
-    <div class="max-w-4xl mx-auto px-4">
-      <Header />
-      <main>
+  <body class="h-full bg-white text-gray-900 font-sans">
+    <Header />
         <slot />
-      </main>
     </div>
   </body>
 </html>

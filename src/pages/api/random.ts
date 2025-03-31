@@ -13,7 +13,7 @@ export const GET: APIRoute = async () => {
         success: true,
         x: xValue,
         y: yValue,
-        redirect: `/post/${xValue.id}/${yValue.id}`
+        redirect: `/${xValue.id}/${yValue.id}`
       }),
       { 
         status: 200, 
