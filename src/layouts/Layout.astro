@@ -4,7 +4,8 @@ import '@fontsource/rubik/400.css';
 import '@fontsource/rubik/700.css';
 import '@fontsource/rubik/900.css';
 import Header from '../components/Header.astro';
-
+import { getImage } from 'astro:assets';
+const ogImage = getImage({ src: '/og-image.png', width: 1200, height: 630 });
 export interface Props {
   title: string;
   description: string;
@@ -56,14 +57,14 @@ const resolvedCanonicalURL = canonicalURL instanceof URL
     <meta property="og:url" content={resolvedCanonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image" content={ogImage} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={resolvedCanonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+    <meta property="twitter:image" content={ogImage} />
   </head>
   <body class="h-full bg-white text-gray-900 font-sans">
     <Header />
