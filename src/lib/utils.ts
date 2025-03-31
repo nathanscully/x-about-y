@@ -24,14 +24,26 @@ export function slugify(text: string): string {
  * Find X value by ID
  */
 export function getXValueById(id: string): XValue | undefined {
-  return xValues.find((x) => x.id === id);
+  const xValue = xValues.find((x) => x.id === id);
+  if (xValue) {
+    // Ensure emoji is properly handled
+    console.log("Raw X emoji:", xValue.emoji);
+    xValue.emoji = xValue.emoji || ""; // Ensure it's not undefined
+  }
+  return xValue;
 }
 
 /**
  * Find Y value by ID
  */
 export function getYValueById(id: string): YValue | undefined {
-  return yValues.find((y) => y.id === id);
+  const yValue = yValues.find((y) => y.id === id);
+  if (yValue) {
+    // Ensure emoji is properly handled
+    console.log("Raw Y emoji:", yValue.emoji);
+    yValue.emoji = yValue.emoji || ""; // Ensure it's not undefined
+  }
+  return yValue;
 }
 
 /**

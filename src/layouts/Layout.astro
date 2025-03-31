@@ -1,19 +1,15 @@
 ---
-
 import '../styles/global.css';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/700.css';
+import '@fontsource/rubik/900.css';
+import Header from '../components/Header.astro';
 
 export interface Props {
   title: string;
   description: string;
   image?: string;
   canonicalURL?: URL | string;
-  type?: 'website' | 'article';
-  post?: {
-    xId: string;
-    yId: string;
-    title: string;
-    content: string;
-  };
 }
 
 const {
@@ -21,30 +17,31 @@ const {
   description,
   image = '/social-image.jpg',
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
-  type = 'website',
-  post,
 } = Astro.props;
-
-// Compute social media sharing title and description
-const socialTitle = post ? `What ${post.title}` : title;
-const socialDescription = post ? post.content.substring(0, 160) + '...' : description;
 
 // Compute canonical URL
 const resolvedCanonicalURL = canonicalURL instanceof URL 
   ? canonicalURL 
   : new URL(canonicalURL, Astro.site);
-
-// LinkedIn sharing URL
-const linkedinShareUrl = post 
-  ? `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(resolvedCanonicalURL.toString())}&title=${encodeURIComponent(socialTitle)}`
-  : `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(resolvedCanonicalURL.toString())}`;
 ---
 <!DOCTYPE html>
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Add emoji font support -->
+    <style>
+      @font-face {
+        font-family: 'NotoColorEmoji';
+        src: url('https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/sheets-256/64.png') format('truetype');
+        font-display: swap;
+      }
+      .emoji {
+        font-family: "Apple Color Emoji", "Segoe UI Emoji", "NotoColorEmoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif;
+      }
+    </style>
     
     <!-- Primary Meta Tags -->
     <title>{title}</title>
@@ -55,53 +52,28 @@ const linkedinShareUrl = post
     <link rel="canonical" href={resolvedCanonicalURL} />
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content={type} />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content={resolvedCanonicalURL} />
-    <meta property="og:title" content={socialTitle} />
-    <meta property="og:description" content={socialDescription} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={resolvedCanonicalURL} />
-    <meta property="twitter:title" content={socialTitle} />
-    <meta property="twitter:description" content={socialDescription} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site)} />
-    
-    <!-- LinkedIn specific -->
-    <meta property="linkedin:title" content={socialTitle} />
-    <meta property="linkedin:description" content={socialDescription} />
     
     <!-- Additional head elements -->
     <slot name="head" />
   </head>
-  <body class="h-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-    <div class="flex flex-col min-h-screen">
-      <header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800">
-        <div class="container mx-auto py-4 px-4 flex justify-between items-center">
-          <a href="/" class="text-xl font-bold text-blue-600">X about Y</a>
-          <nav>
-            <ul class="flex space-x-6">
-              <li><a href="/" class="hover:text-blue-600 transition-colors">Home</a></li>
-              <li><a href="/about" class="hover:text-blue-600 transition-colors">About</a></li>
-              <li><a href="/contribute" class="hover:text-blue-600 transition-colors">Contribute</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      
-      <main class="flex-grow container mx-auto px-4 py-8">
+  <body class="min-h-screen bg-white text-black font-sans">
+    <div class="max-w-4xl mx-auto px-4">
+      <Header />
+      <main>
         <slot />
       </main>
-      
-      <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-6">
-        <div class="container mx-auto px-4 text-center text-sm text-gray-500 dark:text-gray-400">
-          <p>X about Y | Made for harmless fun | Not affiliated with LinkedIn</p>
-          <p class="mt-2">
-            <a href="https://github.com/your-username/x-about-y" class="text-blue-600 hover:underline">GitHub</a>
-          </p>
-        </div>
-      </footer>
     </div>
   </body>
 </html>

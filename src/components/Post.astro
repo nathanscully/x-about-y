@@ -1,0 +1,87 @@
+---
+interface Props {
+  xActivity: string;
+  yConcept: string;
+  content: string;
+  xEmoji?: string;
+  yEmoji?: string;
+}
+
+const { xActivity, yConcept, content, xEmoji = "", yEmoji = "" } = Astro.props;
+
+// Helper function to ensure emoji is rendered properly
+const processEmoji = (emoji: string) => {
+  if (!emoji) return "";
+  
+  // Handle common emoji issues
+  try {
+    // Try to decode URI encoded emojis
+    const decoded = decodeURIComponent(emoji);
+    
+    // Handle escaped Unicode sequences like \u1F600
+    if (decoded.includes('\\u')) {
+      return JSON.parse(`"${decoded}"`);
+    }
+    
+    // For emoji shortcodes (if applicable)
+    if (decoded.startsWith(':') && decoded.endsWith(':')) {
+      // This would be where you'd have a shortcode-to-emoji mapping
+      // For now, just returning as is
+      return decoded;
+    }
+    
+    return decoded;
+  } catch (e) {
+    console.error("Error processing emoji:", e);
+    // Fallback to a default emoji if there's an error
+    return "🔥";
+  }
+};
+
+// Process the emojis
+const safeXEmoji = processEmoji(xEmoji);
+const safeYEmoji = processEmoji(yEmoji)
+
+// Create the LinkedIn share URL
+const postTitle = `What ${xActivity} ${safeXEmoji} taught me about ${yConcept} ${safeYEmoji}`;
+const fullPostContent = `${postTitle}\n\n${content}\n\n\n${Astro.url.href}`;
+const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(fullPostContent)}`;
+---
+
+<div>
+  <h2 class="text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight font-normal mt-2">
+    What {xActivity} <span class="emoji">{safeXEmoji}</span> taught me about {yConcept} <span class="emoji">{safeYEmoji}</span>
+  </h2>
+  
+  <div class="prose max-w-none mb-10">
+    {content.split('\n\n').map((paragraph: string) => (
+      <p class="mb-4 text-base">
+        {paragraph}
+        {paragraph.length > 0 && Math.random() > 0.7 ? 
+          <span class="emoji"> {[safeXEmoji, safeYEmoji, "🔥", "💯", "🚀", "💪", "🙌", "👍"][Math.floor(Math.random() * 8)]}</span> : ""}
+      </p>
+    ))}
+  </div>
+  
+  <div class="flex flex-wrap gap-4">
+    <a 
+      href="/random" 
+      class="inline-block bg-black text-white px-6 py-3 text-base tracking-wide hover:bg-gray-800 transition-colors"
+    >
+      Another learning <span class="emoji">🧠</span>
+    </a>
+    
+    <a 
+      href={linkedInShareUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-[#0077b5] text-white px-6 py-3 text-base tracking-wide hover:bg-[#005e8c] transition-colors"
+    >
+      Share on LinkedIn <span class="emoji">📢</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  /* No need for additional styles as we're using the global .emoji class from the Layout */
+</style> 

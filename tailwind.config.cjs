@@ -3,55 +3,49 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
-      colors: {
-        // LinkedIn-inspired color palette
-        linkedin: {
-          blue: '#0a66c2',
-          lightBlue: '#70b5f9',
-          dark: '#191919',
-          light: '#f3f2ef',
-          text: '#666666',
-        },
-        // Custom brand colors
-        brand: {
-          primary: '#3b82f6',   // Blue
-          secondary: '#6366f1', // Indigo
-          accent: '#ec4899',    // Pink
-          light: '#f8fafc',     // Light background
-          dark: '#0f172a',      // Dark background
-        },
-      },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Montserrat', 'system-ui', 'sans-serif'],
-        mono: ['Fira Mono', 'monospace'],
-      },
-      boxShadow: {
-        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-      },
-      borderRadius: {
-        'xl': '1rem',
-        '2xl': '1.5rem',
+        sans: ['Rubik', 'system-ui', 'sans-serif'],
       },
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: '65ch',
-            color: 'inherit',
+            maxWidth: '75ch',
+            color: '#000',
+            fontFamily: 'Rubik, system-ui, sans-serif',
             a: {
-              color: '#3b82f6',
-              textDecoration: 'none',
+              color: '#000',
+              textDecoration: 'underline',
+              fontWeight: '700',
               '&:hover': {
-                textDecoration: 'underline',
+                color: '#333',
               },
             },
+            h1: {
+              fontWeight: '900',
+              letterSpacing: '-0.025em',
+              fontFamily: 'Rubik, system-ui, sans-serif',
+            },
+            h2: {
+              fontWeight: '900',
+              letterSpacing: '-0.025em',
+              fontFamily: 'Rubik, system-ui, sans-serif',
+            },
+            h3: {
+              fontWeight: '700',
+              fontFamily: 'Rubik, system-ui, sans-serif',
+            },
+            strong: {
+              fontWeight: '700',
+            },
+            p: {
+              fontFamily: 'Rubik, system-ui, sans-serif',
+            }
           },
         },
       },
     },
   },
   plugins: [
+    require('@tailwindcss/typography'),
   ],
-  darkMode: 'class', // Enable dark mode support
 }; 

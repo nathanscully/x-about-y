@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PostCard from '../components/PostCard.astro';
-import Button from '../components/Button.astro';
+import Post from '../components/Post.astro';
 import { getRandomXValue, getRandomYValue } from '../lib/utils';
 
 // Get random values for sample display
 const randomX = getRandomXValue();
 const randomY = getRandomYValue();
+
+// Debug the emoji values
+console.log("Index page randomX emoji:", randomX.emoji);
+console.log("Index page randomY emoji:", randomY.emoji);
 
 // Sample post content (would normally come from the API or KV store)
 const samplePostContent = `Last week, I found myself ${randomX.activity}, and it hit me like a thunderbolt – this experience was a perfect metaphor for ${randomY.concept}! Just as I navigated the unpredictable terrain of this challenge, successful businesses must adapt to the ever-changing landscape of modern markets. The resilience required to stay focused amidst uncertainty directly translates to how we must pivot our strategic frameworks to maintain competitive advantage in today's dynamic ecosystem.
@@ -15,59 +18,18 @@ What truly separated the amateurs from the professionals was how they approached
 
 #MindsetMatters #BusinessLessonsEverywhere #ThoughtLeadership #ProfessionalDevelopment #DisruptiveInnovation #${randomX.activity.replace(/\s+/g, '')} #${randomY.concept.replace(/\s+/g, '')} #AlwaysLearning`;
 
-const title = "X about Y - Generate Funny LinkedIn Parody Posts";
-const description = "Generate hilarious parody LinkedIn posts with absurd combinations of activities and business concepts. Perfect for April Fools' Day!";
+const title = "X about Y";
+const description = "Generate hilarious parody LinkedIn posts with absurd combinations of activities and business concepts.";
 ---
 
-<Layout title={title} description={description}>
-  <section class="max-w-4xl mx-auto">
-    <div class="text-center mb-10">
-      <h1 class="text-4xl font-bold mb-4">
-        <span class="text-blue-600">X</span> 
-        <span class="text-gray-600">about</span> 
-        <span class="text-blue-600">Y</span>
-      </h1>
-      <p class="text-xl mb-6">Generate hilarious parody LinkedIn posts that mimic that overly earnest professional style we all know too well.</p>
-      <p class="text-md mb-8">Combine absurd activities with business concepts for the perfect April Fools' joke.</p>
-    </div>
-
-    <div class="mb-10">
-      <h2 class="text-2xl font-bold mb-4">Today's Random Post</h2>
-      <PostCard 
-        title={`What ${randomX.activity} taught me about ${randomY.concept}`}
-        content={samplePostContent}
-        xValue={randomX.activity}
-        yValue={randomY.concept}
-        isNewlyGenerated={false}
-        permalink={`/post/${randomX.id}/${randomY.id}`}
-      />
-    </div>
-    
-    <div class="flex justify-center gap-4 mb-12">
-      <Button href="/random">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
-        </svg>
-        Get Another Random Post
-      </Button>
-      
-      <Button href="/create" variant="secondary">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-        </svg>
-        Create Your Own
-      </Button>
-    </div>
-    
-    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 mb-8">
-      <h2 class="text-xl font-bold mb-2">How it Works</h2>
-      <ol class="list-decimal pl-5 space-y-2">
-        <li>Choose a random combination or select specific values</li>
-        <li>Our AI generates a hilarious LinkedIn-style post</li>
-        <li>Copy and share the post on social media</li>
-        <li>Watch your connections try to figure out if you've lost your mind</li>
-      </ol>
-      <p class="mt-4 text-sm text-gray-600 dark:text-gray-400">Perfect for April Fools' Day or whenever you need to lighten the mood!</p>
-    </div>
-  </section>
+<Layout title={title} description={description}>  
+  <main class="container mx-auto px-6 pt-8 pb-20">
+    <Post 
+      xActivity={randomX.activity}
+      yConcept={randomY.concept}
+      content={samplePostContent}
+      xEmoji={randomX.emoji}
+      yEmoji={randomY.emoji}
+    />
+  </main>
 </Layout>

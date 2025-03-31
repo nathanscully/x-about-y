@@ -7,8 +7,8 @@ type KVNamespace = import("@cloudflare/workers-types").KVNamespace;
 // Define our custom environment with bindings
 interface Env {
   // KV namespaces
-  POSTS_KV: KVNamespace;
-  GENERATION_COUNTER_KV: KVNamespace;
+  XABOUTY_POSTS: KVNamespace;
+  GENERATION_COUNTER: KVNamespace;
   
   // Environment variables
   OPENAI_API_KEY: string;

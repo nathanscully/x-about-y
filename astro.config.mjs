@@ -22,11 +22,15 @@ export default defineConfig({
     runtime: {
       bindings: {
         // KV namespaces
-        POSTS_KV: {
+        XABOUTY_POSTS: {
           type: 'kv',
         },
-        GENERATION_COUNTER_KV: {
+        XABOUTY_GENERATION_COUNTER: {
           type: 'kv',
+        },
+        // Add this binding for your OpenAI API key
+        OPENAI_API_KEY: {
+          type: 'secret',
         },
       },
     },

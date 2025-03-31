@@ -1,23 +1,52 @@
 ---
-// Common header component with navigation
+import "tippy.js/dist/tippy.css";
+import "tippy.js/animations/shift-away.css";
 ---
 
-<header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800">
-  <div class="container mx-auto py-4 px-4 flex flex-col sm:flex-row justify-between items-center">
-    <div class="flex items-center mb-4 sm:mb-0">
-      <a href="/" class="text-xl font-bold text-blue-600 flex items-center gap-2">
-        <span class="font-extrabold">X</span> 
-        <span class="text-gray-500 dark:text-gray-400">about</span> 
-        <span class="font-extrabold">Y</span>
+<header class="bg-white mb-4 px-6">
+  <div class="flex justify-between items-center py-4">
+    <h1 class="text-2xl tracking-tight font-light"><a href="/">X about Y</a></h1>
+    <div class="relative">
+      <a 
+        href="https://github.com/nathanscully/x-about-y" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="GitHub Repository"
+        id="github-link"
+        data-tippy-content="Contribute by adding your own X or Y"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
       </a>
     </div>
-    
-    <nav>
-      <ul class="flex space-x-6">
-        <li><a href="/" class="hover:text-blue-600 transition-colors">Home</a></li>
-        <li><a href="/about" class="hover:text-blue-600 transition-colors">About</a></li>
-        <li><a href="/contribute" class="hover:text-blue-600 transition-colors">Contribute</a></li>
-      </ul>
-    </nav>
   </div>
 </header>
+
+<script>
+  // @ts-ignore - Ignoring tippy.js module resolution issue
+  import tippy from "tippy.js";
+  
+  // Initialize tooltips
+  document.addEventListener("DOMContentLoaded", () => {
+    initTooltips();
+  });
+  
+  // Also initialize on Astro page transitions
+  document.addEventListener("astro:page-load", () => {
+    initTooltips();
+  });
+  
+  function initTooltips() {
+    const githubLink = document.getElementById('github-link');
+    if (githubLink) {
+      tippy(githubLink, {
+        placement: "bottom",
+        arrow: true,
+        animation: "shift-away",
+        theme: "light-border",
+        duration: [300, 200]
+      });
+    }
+  }
+</script>
