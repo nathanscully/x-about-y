@@ -16,6 +16,14 @@
   @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
 }
 
+/* Prose styles */
+.prose p {
+  @apply mb-6;
+}
+
+.prose p:last-child {
+  @apply mb-0;
+}
 
 /* Custom animations */
 @keyframes blurPulse {
