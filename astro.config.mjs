@@ -40,12 +40,10 @@ export default defineConfig({
       },
     },
   }),
-
-  // Enable Tailwind CSS integration
   integrations: [],
 
   // Set site metadata for SEO
-  site: 'https://linkedin-parody-generator.pages.dev',
+  site: 'https://xabouty.ai',
 
   vite: {
     plugins: [tailwindcss()],
