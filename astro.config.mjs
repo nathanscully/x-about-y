@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
-import tailwind from '@astrojs/tailwind';
+
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
+
   adapter: cloudflare({
     // Cloudflare-specific configuration
     mode: 'directory',
@@ -38,16 +40,14 @@ export default defineConfig({
       },
     },
   }),
+
   // Enable Tailwind CSS integration
-  integrations: [
-    tailwind({
-      // Configure Tailwind CSS options if needed
-      // For example, to add custom plugins or theme values
-      config: { 
-        applyBaseStyles: false, // We'll import the base styles manually
-      },
-    }),
-  ],
+  integrations: [],
+
   // Set site metadata for SEO
   site: 'https://linkedin-parody-generator.pages.dev',
-}); 
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
