@@ -14,4 +14,6 @@ ALLOW_USER_GENERATIONS = "true"
 
 # Secrets (you'll need to add these using wrangler cli)
 # wrangler secret put OPENAI_API_KEY
-# Don't add sensitive values directly here! 
+# Don't add sensitive values directly here!
+
+pages_build_output_dir = "dist"
