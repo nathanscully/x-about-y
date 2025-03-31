@@ -1,5 +1,6 @@
 name = "x-about-y"
 compatibility_date = "2023-10-30"
+pages_build_output_dir = "dist"
 [[kv_namespaces]]
 binding = "XABOUTY_POSTS"
 id = "70f56df9725041b2b447ce1e95d645cd"
@@ -15,5 +16,3 @@ ALLOW_USER_GENERATIONS = "true"
 # Secrets (you'll need to add these using wrangler cli)
 # wrangler secret put OPENAI_API_KEY
 # Don't add sensitive values directly here!
-
-pages_build_output_dir = "dist"
