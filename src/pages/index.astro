@@ -52,15 +52,21 @@ import Layout from '@layouts/Layout.astro';
           </h1>
         </div>
         <!-- Pills -->
-        <div class="w-full md:w-1/2 grid grid-cols-2 gap-4 gap-x-8">
-          {examples.map(([x, y]) => (
-            <a href={`/${x.toLowerCase().replace(/\s+/g, '-')}/${y.toLowerCase().replace(/\s+/g, '-')}`} 
-               class="px-0 py-3 md:py-2 text-sm font-medium hover:opacity-80 transition-opacity">
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">{x}</span>
-              <span class="text-gray-600"> → </span>
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">{y}</span>
-            </a>
-          ))}
+        <div class="w-full md:w-1/2 flex flex-col gap-8">
+          <h2 class="text-2xl font-semibold text-gray-800">Learn from an existing enlightenment 🧠</h2>
+          <div class="grid grid-cols-2 gap-4 gap-x-8">
+            {examples.map(([x, y]) => (
+              <a href={`/${x.toLowerCase().replace(/\s+/g, '-')}/${y.toLowerCase().replace(/\s+/g, '-')}`} 
+                 class="px-4 py-3 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all text-sm font-medium">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">{x}</span>
+                <span class="text-gray-600"> → </span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">{y}</span>
+              </a>
+            ))}
+          </div>
+          <a href="/random" class="px-8 py-4 bg-gradient-to-r from-red-500 to-orange-400 text-white rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl text-center">
+            Generate your own 🚀
+          </a>
         </div>
       </section>
 
